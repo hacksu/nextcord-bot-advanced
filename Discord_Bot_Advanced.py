@@ -74,7 +74,6 @@ class MyClient(discord.Client):
                     else:
                         await channel.send("The secret number is "+("higher " if num < secret else "lower ")+mention)
                 except:
-                    guesses -= 1
                     await channel.send("You need to send me a valid integer.")
         await channel.send("It took you "+str(guesses)+" to find the number. Congrats "+mention)     
         
