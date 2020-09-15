@@ -81,6 +81,7 @@ class MyClient(discord.Client):
     async def help(self,message):
         await message.channel.send("""Here are all of my commands:```
 /help - shows this message
+/ping - pong!
 /create_channel <text|voice> <channel name> - creates a voice or text channel
 /guessing - play a guessing game with the bot
 ```""")
