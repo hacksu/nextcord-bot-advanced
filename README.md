@@ -1,17 +1,17 @@
 # Hacksu-Lesson-Discord-Bot-Advanced
 ## Intro
 Discord, for those who are unfamilar, is a free text and voice chatting platform. You will need a Discord account in order to make and interact with a bot. You can create an account free at their [website](https://discord.com). You can either use Discord through the Desktop Application or through the browser. Additionally, you will need Python 3.8 installed. You can download Python from [here](https://python.org)
-## Installing discord.py
-In order to be able to code your bot, you will need to install the Discord.py module. To do so, follow these steps.
+## Installing nextcord
+In order to be able to code your bot, you will need to install the nextcord module. To do so, follow these steps.
 
 1: Open up your computer's command line interface. For Windows, this is a program called Command Prompt (or Powershell if you would prefer). For Mac and Linux, this is called Terminal. 
 2: Execute the following command
 ```
-pip install discord
+pip install nextcord
 ```
 If Python was installed correctly, you should see output that looks somewhat like (yours will probably look slightly different) to this:
 ![pip successful](https://i.imgur.com/fQpGOzT.png)
-If you don't see this and/or you get an error stating "pip is not recognized as a command" then you will need to unistall and then reinstall Python. When you reinstall, make SURE that you check the box that says "Add Python to your PATH". If you do not, you will not be able to use the pip command to get Discord.py.
+If you don't see this and/or you get an error stating "pip is not recognized as a command" then you will need to unistall and then reinstall Python. When you reinstall, make SURE that you check the box that says "Add Python to your PATH". If you do not, you will not be able to use the pip command to get nextcord.
 ## Creating a Server
 Now that you are able to make a bot, you need to make a place for it to live. To get started, open up Discord and follow these steps:
 
@@ -59,15 +59,15 @@ Create a new folder where you want your code to be, and then inside that folder 
 
 The first step is to add the include statements. We need 4 modules in order to code our bot. Add these to your file:
 ```
-import discord
+import nextcord
 import asyncio
 from datetime import *
 import random
 ```
-```discord``` is the module we just downloaded with pip. The other modules are things we need to create our bot.
+```nextcord``` is the module we just downloaded with pip. The other modules are things we need to create our bot.
 
-The next step is to create a class that inherits from the discord.Client class. Creating an inherited class allows us to make our own personal bot by adding our own features. Don't worry if you don't know exactly what an inherited class means, it isn't neccessary to creating your bot.
-Type ```class MyClient(discord.Client):``` to your file, and then hit enter. Make sure your cursor is also tabbed over after you hit enter.
+The next step is to create a class that inherits from the nextcord.Client class. Creating an inherited class allows us to make our own personal bot by adding our own features. Don't worry if you don't know exactly what an inherited class means, it isn't neccessary to creating your bot.
+Type ```class MyClient(nextcord.Client):``` to your file, and then hit enter. Make sure your cursor is also tabbed over after you hit enter.
 
 This class is where we are going to add all of our bot's functionality. First, we need to have the bot awaken and perform actions when it sees that someone has sent a message. To do this, we will create a function called ```on_message```.
 
@@ -78,7 +78,7 @@ async def on_message(self,message):
         await self.process_commands(message)
 ```
 
-The ```on_message``` function is a function we have overloaded from the base ```discord.Client``` class. This function will be called every time the bot sees a message from a user. We then check if the message begins with our command key (which can be changed from a slash to be whatever you want), and calls the ```process_commands``` function, which we will make next.
+The ```on_message``` function is a function we have overloaded from the base ```nextcord.Client``` class. This function will be called every time the bot sees a message from a user. We then check if the message begins with our command key (which can be changed from a slash to be whatever you want), and calls the ```process_commands``` function, which we will make next.
 
 The ```process_commands``` function is where the bot figures out what command the user called - if any. At the end of this, we are going to have 4 different commands, but for right now we are just adding one command, ```/ping```.
 ```
@@ -110,12 +110,12 @@ These lines of code take your bot's unqiue token out of a .txt file, and connect
 
 Right now, your bot should like the following:
 ```
-import discord
+import nextcord
 import asyncio
 from datetime import *
 import random
 
-class MyClient(discord.Client):    
+class MyClient(nextcord.Client):    
 
     async def on_message(self,message):
         if(message.content.startswith("/")):
@@ -260,10 +260,10 @@ async def on_connect(self):
 The second is ```on_ready```:
 ```
 async def on_ready(self):
-    await self.change_presence(activity=discord.Game(name = "/help"))
+    await self.change_presence(activity=nextcord.Game(name = "/help"))
     print("Successfully set Bot's game status")
 ```
 ```on_ready``` is called whenever the bot is first launched and becomes ready to run commands. Here, we tell the bot to set its Discord presence to be "Playing a game: /help". Doing this shows users what the help command is, so they can figure out all the things it can do.
 
 ## Unique Challenge
-Our bot is finally done, but that doesn't mean we have exhausted everything it can do! Bots are limitless with what they can do, and you can do basically anything you want with them! As this week's Unique Bingo Challenge, read through the official Discord.py documentation (found [here](https://discordpy.readthedocs.io/en/latest/api.html)), and implement a feature that wasn't used in this lesson! This can be something like posting an image, giving itself a nickname, anything you want! Show a leader your bot in action and the new code you made, and you can check off that unique feature section on your Bingo Card!
+Our bot is finally done, but that doesn't mean we have exhausted everything it can do! Bots are limitless with what they can do, and you can do basically anything you want with them! As this week's Unique Bingo Challenge, read through the official nextcord documentation (found [here](https://docs.nextcord.dev/en/latest/api.html)), and implement a feature that wasn't used in this lesson! This can be something like posting an image, giving itself a nickname, anything you want! Show a leader your bot in action and the new code you made, and you can check off that unique feature section on your Bingo Card!
